@@ -17,7 +17,7 @@ const NONCONSENTDATA = [
     heading: "Terms and privacy",
     description: `This is not an actual Threads page. It is just a web dev project and
     is not affiliated with or endorsed by Threads. It serves as a
-    demonstration of programming abilities in a fullstack context. You can visit the actual Threads page by goint to threads.net`,
+    demonstration of programming abilities in a fullstack context. You can visit the actual Threads page by going to threads.net`,
     image: "/checkmark.svg",
   },
 ];
