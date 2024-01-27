@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -26,16 +27,18 @@ export default function Home() {
             <br /> account. This will let you post and interact on Threads
           </p>
         </div>
-        <div className='rounded-2xl border border-[#2e2e2e] pt-5 pb-5 px-6 cursor-pointer relative w-[358px] active:scale-[.98]'>
-          <h2 className='font-bold text-[15px] pt-1 mb-2'>
-            Use without a profile{" "}
-          </h2>
+        <Link href='/nonconsent'>
+          <div className='rounded-2xl border border-[#2e2e2e] pt-5 pb-5 px-6 cursor-pointer relative w-[358px] active:scale-[.98]'>
+            <h2 className='font-bold text-[15px] pt-1 mb-2'>
+              Use without a profile{" "}
+            </h2>
 
-          <p className='text-[12px] text-[#777777]'>
-            You can browse Threads without a profile, but you won't <br /> be
-            able to post or interact with content{" "}
-          </p>
-        </div>
+            <p className='text-[12px] text-[#777777]'>
+              You can browse Threads without a profile, but you won't <br /> be
+              able to post or interact with content{" "}
+            </p>
+          </div>
+        </Link>
       </div>
       <div className='fixed text-[#777777] bottom-4 text-[12px] text-center px-4'>
         <p>

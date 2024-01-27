@@ -75,7 +75,7 @@
   body {
     @apply bg-background text-foreground;
     background-color: #101010;
-    color: rgb(243, 245, 247);
+    color: #f3f5f7;
     font-family: "Montserrat", sans-serif;
   }
 }
