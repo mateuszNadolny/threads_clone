@@ -13,7 +13,7 @@ export default function Home() {
           className='min-w-[1790px]'
         />
       </div>
-      <div className='flex flex-col items-center gap-4 mt-[-4rem] w-[358px] min-w-[358px] p-4'>
+      <div className='flex flex-col items-center gap-4 mt-[-8rem] w-[358px] min-w-[358px] p-4'>
         <h1 className='text-base font-bold'>
           How would you like to use Threads?
         </h1>
