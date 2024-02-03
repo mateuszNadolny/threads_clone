@@ -51,7 +51,7 @@ export async function POST(req: Request) {
   const eventType = evt?.type;
 
   if (eventType === 'user.created' || eventType === 'user.updated') {
-    const { id, first_name, last_name, image_url, email_addresses, username } = evt?.data;
+    const { id, image_url, email_addresses, username } = evt?.data;
 
     try {
       await upsertUser(id, image_url, email_addresses, username as string);
