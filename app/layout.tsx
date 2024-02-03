@@ -1,21 +1,30 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import type { Metadata } from "next";
-import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "NotThreads",
-  description: "A threads clone created with Next.js 14",
+  title: 'NotThreads',
+  description: 'A threads clone created with Next.js 14'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <ClerkProvider>
-    <html lang='en'>
-      <body>{children}</body>
+      <html lang="en">
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
