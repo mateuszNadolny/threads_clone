@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     const { id, first_name, last_name, image_url, email_addresses, username } = evt?.data;
 
     try {
-      await upsertUser(id, first_name, last_name, image_url, email_addresses, username as string);
+      await upsertUser(id, image_url, email_addresses, username as string);
 
       return new Response('User is created or updated', { status: 200 });
     } catch (error) {
