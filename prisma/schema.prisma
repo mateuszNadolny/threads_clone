@@ -11,10 +11,10 @@ datasource db {
 model User {
   id          String @id @default(uuid())
   clerkId     String @unique
-  image       String @default("")
   username    String @unique
   email       String @unique
   biogram     String?
+  image       String? @default("")
   link        String?
   posts       Post[] 
   savedPosts  SavedPost[]
