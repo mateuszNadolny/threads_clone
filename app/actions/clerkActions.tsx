@@ -14,7 +14,8 @@ export const upsertUser = async (
     data: {
       clerkId: id,
       username: username,
-      email: email_addresses[0].email_address
+      email: email_addresses[0].email_address,
+      image: image_url
     }
   });
 };
