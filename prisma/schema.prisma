@@ -11,9 +11,11 @@ datasource db {
 model User {
   id          String @id @default(uuid())
   clerkId     String @unique
-  username    String? @unique
-  email       String? @unique
-  password    String?
+  firstName   String?
+  lastName    String?
+  profilePic  String
+  username    String @unique
+  email       String @unique
   biogram     String?
   link        String?
   posts       Post[] 
@@ -21,7 +23,7 @@ model User {
   likes       Like[]
   comments    Comment[]
   replies     CommentReply[]
-  following   Follow[] @relation("UserFollowing")  // Specify a unique relation name
+  following   Follow[] @relation("UserFollowing")
   followers   Follow[] @relation("UserFollowers")
 }
 
