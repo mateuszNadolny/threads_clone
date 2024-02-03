@@ -8,34 +8,20 @@ export const upsertUser = async (
   email_addresses: { email_address: string }[],
   username: string
 ) => {
-  try {
-    const user = await prisma.user.upsert({
-      where: {
-        clerkId: id
-      },
-      update: {},
-      create: {
-        clerkId: id,
-        email: email_addresses[0].email_address,
-        profilePic: image_url,
-        username: username
-      }
-    });
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  const user = await prisma.user.create({
+    data: {
+      clerkId: id,
+      email: email_addresses[0].email_address,
+      profilePic: image_url,
+      username: username
+    }
+  });
 };
 
 export const deleteUser = async (id: string) => {
-  try {
-    await prisma.user.delete({
-      where: {
-        clerkId: id
-      }
-    });
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  await prisma.user.delete({
+    where: {
+      clerkId: id
+    }
+  });
 };
