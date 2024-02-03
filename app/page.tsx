@@ -1,13 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ModeToggle } from '@/components/theme-toggle';
 
 export default function Home() {
   return (
     <main className="overflow-clip h-screen max-h-screen w-screen max-w-screen flex flex-col items-center">
-      <div className="fixed top-10 h-screen w-screen">
-        <ModeToggle />
-      </div>
       <div className="max-h-[55vh] h-[55vh] flex justify-center">
         <Image
           src="/lp_creatives.webp"
