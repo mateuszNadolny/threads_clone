@@ -22,7 +22,8 @@
     "react-dom": "^18",
     "svix": "^1.16.0",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -34,6 +35,6 @@
     "postcss": "^8",
     "prisma": "^5.9.1",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5.3.3"
   }
 }
