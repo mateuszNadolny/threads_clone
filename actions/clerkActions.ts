@@ -13,9 +13,9 @@ export const upsertUser = async (
   const user = await prisma.user.create({
     data: {
       clerkId: id,
-      profilePic: image_url,
       username: username,
-      email: email_addresses[0].email_address
+      email: email_addresses[0].email_address,
+      profilePic: image_url
     }
   });
 };
