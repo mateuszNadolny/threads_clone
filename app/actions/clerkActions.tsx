@@ -10,8 +10,15 @@ export const upsertUser = async (
   email_addresses: { email_address: string }[],
   username: string
 ) => {
-  const user = await prisma.user.create({
-    data: {
+  const user = await prisma.user.upsert({
+    where: {
+      clerkId: id
+    },
+    update: {
+      username: username,
+      image: image_url
+    },
+    create: {
       clerkId: id,
       username: username,
       email: email_addresses[0].email_address,
