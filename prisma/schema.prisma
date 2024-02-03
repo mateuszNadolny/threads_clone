@@ -11,7 +11,7 @@ datasource db {
 model User {
   id          String @id @default(uuid())
   clerkId     String @unique
-  profilePic  String
+  image       String @default("")
   username    String @unique
   email       String @unique
   biogram     String?

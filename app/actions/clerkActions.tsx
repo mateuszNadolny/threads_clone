@@ -15,7 +15,7 @@ export const upsertUser = async (
       clerkId: id,
       username: username,
       email: email_addresses[0].email_address,
-      profilePic: image_url
+      image: image_url
     }
   });
 };
