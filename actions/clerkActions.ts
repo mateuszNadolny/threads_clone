@@ -4,8 +4,6 @@ const prisma = new PrismaClient();
 
 export const upsertUser = async (
   id: string,
-  first_name: string,
-  last_name: string,
   image_url: string,
   email_addresses: { email_address: string }[],
   username: string
@@ -19,8 +17,6 @@ export const upsertUser = async (
       create: {
         clerkId: id,
         email: email_addresses[0].email_address,
-        firstName: first_name,
-        lastName: last_name,
         profilePic: image_url,
         username: username
       }
