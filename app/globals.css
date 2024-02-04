@@ -73,7 +73,7 @@
 @layer base {
   * {
     @apply border-border;
-    transition: background-color 500ms linear;
+    /* transition: background-color 500ms linear; */
   }
   body {
     /* color: #f3f5f7; */

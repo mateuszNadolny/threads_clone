@@ -34,7 +34,7 @@ const NonConsentPage = () => {
         </div>
         <div className="fixed bottom-10 flex flex-col gap-2 w-[358px]">
           <Button asChild className="rounded-2xl font-bold text-[15px] h-[52px] active:scale-[.98]">
-            <Link href="/dashboard">Use without a profile</Link>
+            <Link href="/feed">Use without a profile</Link>
           </Button>
           <Button
             asChild

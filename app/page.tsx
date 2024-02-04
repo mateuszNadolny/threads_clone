@@ -3,13 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useRouter } from 'next/navigation';
+
 import { useUser } from '@clerk/nextjs';
 
 export default function Home() {
   const { isSignedIn } = useUser();
+  const router = useRouter();
 
   if (isSignedIn) {
-    window.location.assign('/dashboard');
+    router.push('/feed');
   }
 
   return (
