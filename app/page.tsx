@@ -1,7 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useUser } from '@clerk/nextjs';
+
 export default function Home() {
+  const { isSignedIn } = useUser();
+
+  if (isSignedIn) {
+    window.location.assign('/dashboard');
+  }
+
   return (
     <main className="overflow-clip h-screen max-h-screen w-screen max-w-screen flex flex-col items-center">
       <div className="max-h-[55vh] h-[55vh] flex justify-center">
