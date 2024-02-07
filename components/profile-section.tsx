@@ -11,10 +11,8 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
   const { username, image, biogram, link, id, clerkId } = currentUser;
   const { user, isSignedIn } = useUser();
 
-  console.log('this is user.id: ' + user?.id);
-  console.log('this is clerkId: ' + clerkId);
   return (
-    <div className="w-[90%] pt-[80px] lg:pt-[95px]">
+    <div className="w-[90%] pt-[80px] lg:pt-[95px] max-w-[572px]">
       <div className="flex justify-between items-center mb-4">
         <div className="font-bold text-2xl">{username}</div>
         <Image
@@ -33,19 +31,21 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
       </div>
       {user?.id === clerkId && isSignedIn && (
         <div className="flex w-full gap-4">
-          <Button className="w-full h-[30px] rounded-lg">Edit profile</Button>
+          <Button className="w-full h-[35px] rounded-lg" variant="outline">
+            Edit profile
+          </Button>
         </div>
       )}
       {user?.id !== clerkId && isSignedIn && (
         <div className="flex w-full gap-4">
-          <Button className="w-1/2 h-[30px] rounded-lg">Folow</Button>{' '}
-          <Button className="w-1/2 h-[30px] rounded-lg" variant="outline">
+          <Button className="w-1/2 h-[35px] rounded-lg">Folow</Button>{' '}
+          <Button className="w-1/2 h-[35px] rounded-lg" variant="outline">
             Mention
           </Button>
         </div>
       )}
 
-      {!isSignedIn && <div>sign in to follow</div>}
+      {!isSignedIn && <></>}
     </div>
   );
 };
