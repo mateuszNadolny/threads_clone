@@ -1,3 +1,5 @@
+//this file contains server actions regarding webhook based user synchronisation between Clerk and Supabase
+
 'use server';
 
 import { PrismaClient } from '@prisma/client';
@@ -33,13 +35,4 @@ export const deleteUser = async (id: string) => {
       clerkId: id
     }
   });
-};
-
-export const findUser = async (username: string) => {
-  const user = await prisma.user.findUnique({
-    where: {
-      username: username
-    }
-  });
-  return !!user;
 };
