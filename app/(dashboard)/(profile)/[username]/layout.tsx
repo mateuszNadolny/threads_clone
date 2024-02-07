@@ -7,6 +7,7 @@ import { findUser } from '@/app/actions/dbActions';
 import { UserProps } from '@/lib/types';
 
 import ProfileSection from '@/components/profile-section';
+import BlindAlley from '@/components/blind-alley';
 
 interface ProfilePageLayoutProps {
   children: React.ReactNode;
@@ -44,9 +45,7 @@ const ProfilePageLayout = ({ children, params }: ProfilePageLayoutProps) => {
           {children}
         </div>
       )}
-      {!user && !isLoading && (
-        <div className="h-screen w-screen flex justify-center items-center">user not found</div>
-      )}
+      {!user && !isLoading && <BlindAlley />}
     </div>
   );
 };
