@@ -1,15 +1,21 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Button } from './ui/button';
 
 import { UserProps } from '@/lib/types';
+
+import { cn } from '@/lib/utils';
+
 const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
   const { username, image, biogram, link, id, clerkId } = currentUser;
   const { user, isSignedIn } = useUser();
+  const pathname = usePathname();
 
   return (
     <div className="w-[90%] pt-[80px] lg:pt-[95px] max-w-[572px]">
@@ -18,8 +24,8 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
         <Image
           src={image as string}
           unoptimized
-          width={55}
-          height={55}
+          width={65}
+          height={65}
           alt="profile"
           className="rounded-full"
         />
@@ -44,8 +50,30 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
           </Button>
         </div>
       )}
-
       {!isSignedIn && <></>}
+      <div className="flex w-full mt-5">
+        <div
+          className={cn(
+            'text-[#777777] h-[40px] flex-1 w-1/3 flex justify-center items-center border-b-2',
+            pathname === `/${user?.username}` && 'border-primary text-primary'
+          )}>
+          <Link href={`/${user?.username}`}>Threads</Link>
+        </div>
+        <div
+          className={cn(
+            'text-[#777777] h-[40px] flex-1 w-1/3 flex justify-center items-center border-b-2',
+            pathname === `/${user?.username}/replies` && 'border-primary text-primary'
+          )}>
+          <Link href={`/${user?.username}/replies`}>Replies</Link>
+        </div>
+        <div
+          className={cn(
+            'text-[#777777] h-[40px] flex-1 w-1/3 flex justify-center items-center border-b-2',
+            pathname === `/${user?.username}/reposts` && 'border-primary text-primary'
+          )}>
+          <Link href={`/${user?.username}/reposts`}>Reposts</Link>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 'use client';
 
 const ProfilePage = () => {
-  return <div>profile section</div>;
+  return <div className="mt-10">profile section</div>;
 };
 
 export default ProfilePage;
