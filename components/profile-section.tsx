@@ -6,6 +6,7 @@ import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import EditProfile from './edit-profile';
 import { Button } from './ui/button';
 
 import { UserProps } from '@/lib/types';
@@ -24,8 +25,8 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
         <Image
           src={image as string}
           unoptimized
-          width={65}
-          height={65}
+          width={84}
+          height={84}
           alt="profile"
           className="rounded-full"
         />
@@ -37,9 +38,7 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
       </div>
       {user?.id === clerkId && isSignedIn && (
         <div className="flex w-full gap-4">
-          <Button className="w-full h-[35px] rounded-lg" variant="outline">
-            Edit profile
-          </Button>
+          <EditProfile currentUser={currentUser} />
         </div>
       )}
       {user?.id !== clerkId && isSignedIn && (
@@ -51,7 +50,7 @@ const ProfileSection = ({ currentUser }: { currentUser: UserProps }) => {
         </div>
       )}
       {!isSignedIn && <></>}
-      <div className="flex w-full mt-5">
+      <div className="flex w-full mt-5 text-[15px]">
         <div
           className={cn(
             'text-[#777777] h-[40px] flex-1 w-1/3 flex justify-center items-center border-b-2',
