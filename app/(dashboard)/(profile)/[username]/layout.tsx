@@ -33,7 +33,7 @@ const ProfilePageLayout = ({ children, params }: ProfilePageLayoutProps) => {
       }
     };
     fetchUser();
-  }, [username]);
+  }, [user, username]);
 
   return (
     <div>

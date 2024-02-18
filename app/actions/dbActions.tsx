@@ -1,7 +1,7 @@
 'use server';
 
 import { PrismaClient } from '@prisma/client';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 const prisma = new PrismaClient();
 
@@ -26,5 +26,5 @@ export const editUserProfile = async (data: { id: string; biogram: string; link:
       link: data.link
     }
   });
-  revalidatePath('/' + user.username);
+  revalidatePath('/(dashboard)/(profile)/[username]', 'layout');
 };
