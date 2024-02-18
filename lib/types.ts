@@ -1,5 +1,3 @@
-import { SavedPost } from '@prisma/client';
-
 export interface NonConsentProps {
   heading: string;
   description: string;

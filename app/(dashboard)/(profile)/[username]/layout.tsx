@@ -24,7 +24,6 @@ const ProfilePageLayout = ({ children, params }: ProfilePageLayoutProps) => {
       try {
         const fetchedUser = await findUser(username);
         if (fetchedUser) {
-          console.log(fetchedUser);
           setUser(fetchedUser);
         }
       } catch (error) {
