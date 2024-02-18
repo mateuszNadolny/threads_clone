@@ -11,15 +11,12 @@ export const findUser = async (username: string) => {
       username: username
     }
   });
+  revalidatePath('/' + username);
+
   return user;
 };
 
 export const editUserProfile = async (data: { id: string; biogram: string; link: string }) => {
-  // const id = formData.get('id') as string;
-  // const biogram = formData.get('biogram') as string;
-  // const link = formData.get('link') as string;
-  console.log(data);
-
   const user = await prisma.user.update({
     where: {
       id: data.id
