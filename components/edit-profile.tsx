@@ -1,17 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import { editUserProfile } from '@/app/actions/dbActions';
+
+import { UserProps, EditUserSchema } from '@/lib/types';
+
+import { useUserProfileStore } from '@/zustand/store';
 
 import Form from './ui/form';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-
-import { UserProps, EditUserSchema } from '@/lib/types';
 
 const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
   const [currentFormData, setCurrentFormData] = useState({
@@ -22,6 +23,7 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
   const [errorMessages, setErrorMessages] = useState<string[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
+  const { zustandBiogram, setZustandBiogram, zustandLink, setZustandLink } = useUserProfileStore();
 
   const editUserFormAction = async (formData: FormData) => {
     const result = EditUserSchema.safeParse({
@@ -38,6 +40,8 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
 
     try {
       await editUserProfile(result.data);
+      setZustandBiogram(result.data.biogram as string);
+      setZustandLink(result.data.link as string);
     } catch (error) {
       console.log(error);
     } finally {
@@ -76,7 +80,9 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
               required
               value={currentFormData.biogram}
               disabled={isPending}
-              onChange={(e) => setCurrentFormData({ ...currentFormData, biogram: e.target.value })}
+              onChange={(e) => {
+                setCurrentFormData({ ...currentFormData, biogram: e.target.value });
+              }}
             />
           </div>
           <div>
@@ -89,7 +95,9 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
               required
               value={currentFormData.link}
               disabled={isPending}
-              onChange={(e) => setCurrentFormData({ ...currentFormData, link: e.target.value })}
+              onChange={(e) => {
+                setCurrentFormData({ ...currentFormData, link: e.target.value });
+              }}
             />
           </div>
           <Button type="submit" className="w-full" disabled={isPending}>
