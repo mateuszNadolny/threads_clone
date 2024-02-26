@@ -10,6 +10,7 @@ import { useUserProfileStore } from '@/zustand/store';
 
 import Form from './ui/form';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -23,7 +24,7 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
   const [errorMessages, setErrorMessages] = useState<string[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
-  const { zustandBiogram, setZustandBiogram, zustandLink, setZustandLink } = useUserProfileStore();
+  const { setZustandBiogram, setZustandLink } = useUserProfileStore();
 
   const editUserFormAction = async (formData: FormData) => {
     const result = EditUserSchema.safeParse({
@@ -59,7 +60,7 @@ const EditProfile = ({ currentUser }: { currentUser: UserProps }) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[90%]">
-        <div>
+        <div className="">
           <Label>Name</Label>
           <p>🔒{currentUser.username}</p>
         </div>

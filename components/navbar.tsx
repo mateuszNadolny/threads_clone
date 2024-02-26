@@ -1,17 +1,26 @@
 'use client';
+
 import Link from 'next/link';
 
 import { usePathname } from 'next/navigation';
-import { useUser } from '@clerk/nextjs';
+import { useUser, useClerk } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
 
+import ThemeToggle from './theme-toggle';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
 
 import { AtSign, Home, Search, SquarePen, Heart, User, Menu } from 'lucide-react';
 
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const pathname = usePathname();
+  const { signOut } = useClerk();
 
   if (isLoaded) {
     return (
@@ -68,7 +77,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <div className="lg:hidden fixed top-0 h-[60px] backdrop-blur-md w-screen flex items-center justify-between lg:px-[21rem] lg:backdrop-blur-none  lg:bg-transparent pointer-event-none" />
+        <div className="lg:hidden fixed top-0 h-[60px] backdrop-blur-md w-screen flex items-center justify-between lg:px-[21rem] lg:backdrop-blur-none  lg:bg-transparent" />
         <Link
           href="/feed"
           className="fixed left-[50%] translate-x-[-50%]  w-[60px] h-[60px] hover:bg-gray-800/50 flex items-center justify-center rounded-xl active:scale-[.95] xl:top-[10px] xl:left-[21rem]">
@@ -81,7 +90,24 @@ const Navbar = () => {
             isSignedIn && 'hover:bg-gray-800/50'
           )}>
           {isSignedIn ? (
-            <Menu className="h-[30px] w-[30px] stroke-border" />
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Menu className="h-[30px] w-[30px] stroke-border border-none focus:border-none active:border-none" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <ThemeToggle />
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/user-profile">Settings</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/" onClick={() => signOut()}>
+                    Sign out
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <Link href="/sign-in" className="mr-3">
               <Button className="h-[30px]">Sign in</Button>

@@ -1,34 +1,35 @@
 'use client';
 
-import * as React from 'react';
-import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+import { Moon, Sun } from 'lucide-react';
 
-export function ThemeToggle() {
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+
+const ThemeToggle = () => {
   const { setTheme } = useTheme();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+    <Dialog>
+      <DialogTrigger role="menuitem" className="w-full">
+        <p className="text-start text-sm px-[8px] py-[6px] hover:bg-accent focus:bg-accent focus:text-accent-foreground cursor-default rounded-sm">
+          Theme
+        </p>
+      </DialogTrigger>
+      <DialogContent className="py-10">
+        <Button variant="outline" onClick={() => setTheme('light')}>
+          <Sun />
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        <Button variant="outline" onClick={() => setTheme('dark')}>
+          <Moon />
+        </Button>
+        <Button variant="outline" onClick={() => setTheme('system')}>
+          System
+        </Button>
+      </DialogContent>
+    </Dialog>
   );
-}
+};
+
+export default ThemeToggle;
