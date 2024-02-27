@@ -34,3 +34,17 @@ export const EditUserSchema = z.object({
     .min(5, { message: 'Link must be at least 5 characters' })
     .max(50, { message: 'Link must not exceed 50 characters' })
 });
+
+export const CreatePostSchema = z.object({
+  userId: z.string().uuid(),
+  text: z
+    .string()
+    .trim()
+    .min(5, { message: 'Thread must be at least 5 characters' })
+    .max(700, { message: 'Thread must not exceed 700 characters' }),
+  image: z
+    .string()
+    .trim()
+    .min(5, { message: 'Link must be at least 5 characters' })
+    .max(50, { message: 'Link must not exceed 50 characters' })
+});

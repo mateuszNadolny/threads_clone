@@ -7,6 +7,7 @@ import { useUser, useClerk } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
 
 import ThemeToggle from './theme-toggle';
+import AddPostModal from './add-post-modal';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -48,8 +49,8 @@ const Navbar = () => {
           </Link>
 
           {isSignedIn && (
-            <div className="w-[60px] h-[60px] hover:bg-gray-800/50 flex items-center justify-center rounded-xl active:scale-[.95]">
-              <SquarePen className="h-[30px] w-[30px] stroke-border" />
+            <div className="w-[60px] h-[60px] hover:bg-gray-800/50 flex items-center justify-center rounded-xl active:scale-[.95] cursor-pointer">
+              <AddPostModal />
             </div>
           )}
           {isSignedIn && (
